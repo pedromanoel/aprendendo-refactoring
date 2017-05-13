@@ -1,3 +1,5 @@
+package refactoring.capitulo1;
+
 public class Movie {
     public static final int CHILDREN = 2;
     public static final int REGULAR = 0;

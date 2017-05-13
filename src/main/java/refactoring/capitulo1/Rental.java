@@ -1,3 +1,5 @@
+package refactoring.capitulo1;
+
 public class Rental {
 
     private Movie movie;
