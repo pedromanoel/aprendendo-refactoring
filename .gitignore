@@ -1,2 +1,6 @@
 build/
 .gradle/
+movie-rental.iml
+movie-rental.ipr
+movie-rental.iws
+.idea
