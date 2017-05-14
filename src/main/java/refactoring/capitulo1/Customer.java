@@ -20,27 +20,39 @@ public class Customer {
     }
 
     public String statement() {
-        String result = "Rental record for " + getName() + "\n";
+        StringBuilder result = new StringBuilder();
+
+        // add header lines
+        result.append(String.format("Rental record for %s\n", getName()));
+
+        // show figures for this each
         for (Rental each : rentals) {
-            // show figures for this each
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
+            result.append(String.format("\t%s\t%.1f\n", each.getMovie().getTitle(), each.getCharge()));
         }
+
         // add footer lines
-        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(getFrequentRenterPoints()) + " frequent renter points";
-        return result;
+        result.append(String.format("Amount owed is %.1f\n", getTotalCharge()));
+        result.append(String.format("You earned %d frequent renter points", getFrequentRenterPoints()));
+
+        return result.toString();
     }
 
     public String htmlStatement() {
-        String result = String.format("<h1>Rentals for <em>%s</em></h1><p>\n", getName());
+        StringBuilder result = new StringBuilder();
+
+        // add header lines
+        result.append(String.format("<h1>Rentals for <em>%s</em></h1><p>\n", getName()));
+
+        // show figures for this each
         for (Rental each : rentals) {
-            // show figures for this each
-            result += String.format("%s: %.1f<br>\n", each.getMovie().getTitle(), each.getCharge());
+            result.append(String.format("%s: %.1f<br>\n", each.getMovie().getTitle(), each.getCharge()));
         }
+
         // add footer lines
-        result += String.format("You owe <em>%.1f</em><p>\n", getTotalCharge());
-        result += String.format("On this rental you earned <em>%d</em> frequent renter points<p>", getFrequentRenterPoints());
-        return result;
+        result.append(String.format("You owe <em>%.1f</em><p>\n", getTotalCharge()));
+        result.append(String.format("On this rental you earned <em>%d</em> frequent renter points<p>", getFrequentRenterPoints()));
+
+        return result.toString();
     }
 
     double getTotalCharge() {
