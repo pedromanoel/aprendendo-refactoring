@@ -3,23 +3,23 @@ package refactoring.capitulo1;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer {
+class Customer {
     private String name;
     private List<Rental> rentals = new ArrayList<>();
 
-    public Customer(String name) {
+    Customer(String name) {
         this.name = name;
     }
 
-    public void addRental(Rental arg) {
+    void addRental(Rental arg) {
         rentals.add(arg);
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String statement() {
+    String statement() {
         StringBuilder result = new StringBuilder();
 
         // add header lines
@@ -37,7 +37,7 @@ public class Customer {
         return result.toString();
     }
 
-    public String htmlStatement() {
+    String htmlStatement() {
         StringBuilder result = new StringBuilder();
 
         // add header lines
