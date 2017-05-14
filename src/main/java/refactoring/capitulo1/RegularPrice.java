@@ -1,10 +1,6 @@
 package refactoring.capitulo1;
 
 class RegularPrice extends Price {
-    @Override
-    int getPriceCode() {
-        return Movie.REGULAR;
-    }
 
     @Override
     double getCharge(int daysRented) {

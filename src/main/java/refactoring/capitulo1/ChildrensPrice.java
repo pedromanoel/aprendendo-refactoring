@@ -1,10 +1,6 @@
 package refactoring.capitulo1;
 
 class ChildrensPrice extends Price {
-    @Override
-    int getPriceCode() {
-        return Movie.CHILDREN;
-    }
 
     @Override
     double getCharge(int daysRented) {

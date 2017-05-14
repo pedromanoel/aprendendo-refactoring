@@ -13,10 +13,6 @@ class Movie {
         setPriceCode(priceCode);
     }
 
-    int getPriceCode() {
-        return price.getPriceCode();
-    }
-
     void setPriceCode(int arg) {
         switch (arg) {
             case REGULAR:
