@@ -20,7 +20,7 @@ public class Customer {
     }
 
     public String statement() {
-        String result = "refactoring.capitulo1.Rental record for " + getName() + "\n";
+        String result = "Rental record for " + getName() + "\n";
         for (Rental each : rentals) {
             // show figures for this each
             result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
@@ -28,6 +28,18 @@ public class Customer {
         // add footer lines
         result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
         result += "You earned " + String.valueOf(getFrequentRenterPoints()) + " frequent renter points";
+        return result;
+    }
+
+    public String htmlStatement() {
+        String result = String.format("<h1>Rentals for <em>%s</em></h1><p>\n", getName());
+        for (Rental each : rentals) {
+            // show figures for this each
+            result += String.format("%s: %.1f<br>\n", each.getMovie().getTitle(), each.getCharge());
+        }
+        // add footer lines
+        result += String.format("You owe <em>%.1f</em><p>\n", getTotalCharge());
+        result += String.format("On this rental you earned <em>%d</em> frequent renter points<p>", getFrequentRenterPoints());
         return result;
     }
 

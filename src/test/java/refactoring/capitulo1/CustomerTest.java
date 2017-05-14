@@ -31,9 +31,19 @@ public class CustomerTest {
     @Test
     public void testStatementWhenRentalsIsEmpty() {
         assertThat(customer.statement(), is(
-                "refactoring.capitulo1.Rental record for Pedro\n" +
+                "Rental record for Pedro\n" +
                         "Amount owed is 0.0\n" +
                         "You earned 0 frequent renter points"));
+    }
+
+    @Test
+    public void testHtmlStatement() {
+        customer.addRental(new Rental(regular, 2));
+        assertThat(customer.htmlStatement(), is(
+                "<h1>Rentals for <em>Pedro</em></h1><p>\n" +
+                        "Robocop 1: 2.0<br>\n" +
+                        "You owe <em>2.0</em><p>\n" +
+                        "On this rental you earned <em>1</em> frequent renter points<p>"));
     }
 
     @Test
@@ -126,7 +136,7 @@ public class CustomerTest {
         customer.addRental(new Rental(children, 2));
 
         assertThat(customer.statement(), is(
-                "refactoring.capitulo1.Rental record for Pedro\n" +
+                "Rental record for Pedro\n" +
                         "\tRobocop 1\t2.0\n" +
                         "\tMatilda\t1.5\n" +
                         "Amount owed is 3.5\n" +
