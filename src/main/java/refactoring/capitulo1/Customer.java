@@ -25,8 +25,6 @@ public class Customer {
 
         String result = "refactoring.capitulo1.Rental record for " + getName() + "\n";
         for (Rental each : rentals) {
-            double amount = each.getCharge();
-
             // add frequent renter points
             frequentRenterPoints++;
             // add bonus for a two day new release each
@@ -34,9 +32,9 @@ public class Customer {
                 frequentRenterPoints++;
 
             // show figures for this each
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(amount) + "\n";
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
 
-            totalAmount += amount;
+            totalAmount += each.getCharge();
         }
         // add footer lines
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
