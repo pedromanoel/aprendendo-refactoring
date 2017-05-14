@@ -24,32 +24,32 @@ public class Customer {
         int frequentRenterPoints = 0;
 
         String result = "refactoring.capitulo1.Rental record for " + getName() + "\n";
-        for (Rental rental : rentals) {
+        for (Rental each : rentals) {
             double amount = 0;
-            switch (rental.getMovie().getPriceCode()) {
+            switch (each.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
                     amount += 2;
-                    if (rental.getDaysRented() > 2)
-                        amount += (rental.getDaysRented() - 2) * 1.5;
+                    if (each.getDaysRented() > 2)
+                        amount += (each.getDaysRented() - 2) * 1.5;
                     break;
                 case Movie.NEW_RELEASE:
-                    amount += rental.getDaysRented() * 3;
+                    amount += each.getDaysRented() * 3;
                     break;
                 case Movie.CHILDREN:
                     amount += 1.5;
-                    if (rental.getDaysRented() > 3)
-                        amount += (rental.getDaysRented() - 3) * 1.5;
+                    if (each.getDaysRented() > 3)
+                        amount += (each.getDaysRented() - 3) * 1.5;
                     break;
             }
 
             // add frequent renter points
             frequentRenterPoints++;
-            // add bonus for a two day new release rental
-            if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1)
+            // add bonus for a two day new release each
+            if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE && each.getDaysRented() > 1)
                 frequentRenterPoints++;
 
-            // show figures for this rental
-            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(amount) + "\n";
+            // show figures for this each
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(amount) + "\n";
 
             totalAmount += amount;
         }
