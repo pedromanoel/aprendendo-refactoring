@@ -29,6 +29,12 @@ public class FileReaderTest {
         assertEquals('d', ch);
     }
 
+    @Test(expected = IOException.class)
+    public void testReadWhenStreamClosed() throws IOException {
+        file.close();
+        file.read();
+    }
+
     @After
     public void tearDown() throws IOException {
         file.close();
