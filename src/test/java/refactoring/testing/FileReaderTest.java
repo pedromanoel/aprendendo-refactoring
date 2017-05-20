@@ -57,6 +57,7 @@ public class FileReaderTest {
 
         assertEquals("read last char", '6', input.read());
         assertEquals("read at end", -1, input.read());
+        assertEquals("read past end", -1, input.read());
     }
 
     @Test
