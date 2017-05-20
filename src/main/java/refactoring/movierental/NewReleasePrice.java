@@ -1,4 +1,4 @@
-package refactoring.capitulo1;
+package refactoring.movierental;
 
 class NewReleasePrice extends Price {
     @Override

@@ -1,4 +1,4 @@
-package refactoring.capitulo1;
+package refactoring.movierental;
 
 import java.util.ArrayList;
 import java.util.List;

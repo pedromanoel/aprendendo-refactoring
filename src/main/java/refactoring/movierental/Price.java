@@ -1,4 +1,4 @@
-package refactoring.capitulo1;
+package refactoring.movierental;
 
 abstract class Price {
     abstract double getCharge(int daysRented);
