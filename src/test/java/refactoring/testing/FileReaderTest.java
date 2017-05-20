@@ -46,6 +46,20 @@ public class FileReaderTest {
         assertEquals("read at end", -1, file.read());
     }
 
+    @Test
+    public void testReadBoundaries() throws IOException {
+        assertEquals("read first char", 'B', file.read());
+
+        int ch;
+
+        for (int i = 0; i < 296; i++) {
+            ch = file.read();
+        }
+
+        assertEquals("read last char", '6', file.read());
+        assertEquals("read at end", -1, file.read());
+    }
+
     @After
     public void tearDown() throws IOException {
         file.close();
