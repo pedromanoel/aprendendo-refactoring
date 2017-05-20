@@ -35,6 +35,17 @@ public class FileReaderTest {
         file.read();
     }
 
+    @Test
+    public void testReadAtEnd() throws IOException {
+        int ch = -1234;
+
+        for (int i = 0; i < 298; i++) {
+            ch = file.read();
+        }
+
+        assertEquals("read at end", -1, file.read());
+    }
+
     @After
     public void tearDown() throws IOException {
         file.close();
