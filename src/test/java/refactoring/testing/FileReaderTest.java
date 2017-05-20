@@ -11,11 +11,11 @@ import org.junit.Test;
 
 public class FileReaderTest {
 
-    private InputStream file;
+    private InputStream input;
 
     @Before
     public void setUp() {
-        file = loadFixtureFile();
+        input = loadFixtureFile();
     }
 
     @Test
@@ -23,7 +23,7 @@ public class FileReaderTest {
         char ch = '&';
 
         for (int i = 0; i < 4; i++) {
-            ch = (char) file.read();
+            ch = (char) input.read();
         }
 
         assertEquals('d', ch);
@@ -31,8 +31,8 @@ public class FileReaderTest {
 
     @Test(expected = IOException.class)
     public void testReadWhenStreamClosed() throws IOException {
-        file.close();
-        file.read();
+        input.close();
+        input.read();
     }
 
     @Test
@@ -40,32 +40,32 @@ public class FileReaderTest {
         int ch = -1234;
 
         for (int i = 0; i < 298; i++) {
-            ch = file.read();
+            ch = input.read();
         }
 
-        assertEquals("read at end", -1, file.read());
+        assertEquals("read at end", -1, input.read());
     }
 
     @Test
     public void testReadBoundaries() throws IOException {
-        assertEquals("read first char", 'B', file.read());
+        assertEquals("read first char", 'B', input.read());
 
         int ch;
 
         for (int i = 0; i < 296; i++) {
-            ch = file.read();
+            ch = input.read();
         }
 
-        assertEquals("read last char", '6', file.read());
-        assertEquals("read at end", -1, file.read());
+        assertEquals("read last char", '6', input.read());
+        assertEquals("read at end", -1, input.read());
     }
 
     @After
     public void tearDown() throws IOException {
-        file.close();
+        input.close();
     }
 
     private InputStream loadFixtureFile() {
-        return getClass().getClassLoader().getResourceAsStream("fixture.txt");
+        return getClass().getClassLoader().getResourceAsStream("data.txt");
     }
 }
