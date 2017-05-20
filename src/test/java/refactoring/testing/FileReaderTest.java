@@ -13,10 +13,12 @@ import org.junit.Test;
 public class FileReaderTest {
 
     private InputStream input;
+    private InputStream empty;
 
     @Before
     public void setUp() {
-        input = loadFixtureFile();
+        input = loadFixtureFile("data.txt");
+        empty = loadFixtureFile("empty.txt");
     }
 
     @Test
@@ -57,12 +59,17 @@ public class FileReaderTest {
         assertEquals("read at end", -1, input.read());
     }
 
+    @Test
+    public void testEmptyRead() throws IOException {
+        assertEquals(-1, empty.read());
+    }
+
     @After
     public void tearDown() throws IOException {
         input.close();
     }
 
-    private InputStream loadFixtureFile() {
-        return getClass().getClassLoader().getResourceAsStream("data.txt");
+    private InputStream loadFixtureFile(String fileName) {
+        return getClass().getClassLoader().getResourceAsStream(fileName);
     }
 }
