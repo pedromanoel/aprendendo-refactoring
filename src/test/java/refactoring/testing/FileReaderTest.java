@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class FileReaderTest {
 
     private InputStream input;
@@ -37,10 +38,8 @@ public class FileReaderTest {
 
     @Test
     public void testReadAtEnd() throws IOException {
-        int ch = -1234;
-
         for (int i = 0; i < 298; i++) {
-            ch = input.read();
+            input.read();
         }
 
         assertEquals("read at end", -1, input.read());
@@ -50,10 +49,8 @@ public class FileReaderTest {
     public void testReadBoundaries() throws IOException {
         assertEquals("read first char", 'B', input.read());
 
-        int ch;
-
         for (int i = 0; i < 296; i++) {
-            ch = input.read();
+            input.read();
         }
 
         assertEquals("read last char", '6', input.read());
