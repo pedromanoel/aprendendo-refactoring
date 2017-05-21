@@ -1,4 +1,4 @@
-package refactoring.movierental;
+package refactoring.movie_rental;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

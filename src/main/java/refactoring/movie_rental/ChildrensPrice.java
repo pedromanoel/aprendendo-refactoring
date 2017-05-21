@@ -1,4 +1,4 @@
-package refactoring.movierental;
+package refactoring.movie_rental;
 
 class ChildrensPrice extends Price {
 

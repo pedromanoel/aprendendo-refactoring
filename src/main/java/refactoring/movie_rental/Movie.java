@@ -1,4 +1,4 @@
-package refactoring.movierental;
+package refactoring.movie_rental;
 
 class Movie {
     static final int CHILDREN = 2;
