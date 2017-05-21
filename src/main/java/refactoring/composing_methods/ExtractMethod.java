@@ -26,15 +26,19 @@ public class ExtractMethod {
             outstanding += order.getAmmount();
         }
 
-        // print details
-        println("name: " + name);
-        println("amount: " + outstanding);
+        printDetails(outstanding);
     }
 
     private void printBanner() {
         println("*************************");
         println("***** Customer Owes *****");
         println("*************************");
+    }
+
+    private void printDetails(double outstanding) {
+        // print details
+        println("name: " + name);
+        println("amount: " + outstanding);
     }
 
     void setOutputStream(ByteArrayOutputStream outputStream) {
