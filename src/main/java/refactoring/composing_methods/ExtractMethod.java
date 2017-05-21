@@ -25,6 +25,21 @@ public class ExtractMethod {
         printDetails(outstanding);
     }
 
+    void printOwing(double previousAmount) {
+        Iterator<Order> i = orders.iterator();
+        double outstanding = previousAmount * 1.2;
+
+        printBanner();
+
+        // calculate outstanding
+        while(i.hasNext()) {
+            Order order = i.next();
+            outstanding += order.getAmmount();
+        }
+
+        printDetails(outstanding);
+    }
+
     private void printBanner() {
         println("*************************");
         println("***** Customer Owes *****");
