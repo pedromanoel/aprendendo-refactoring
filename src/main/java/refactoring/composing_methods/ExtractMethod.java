@@ -19,10 +19,7 @@ public class ExtractMethod {
     void printOwing() {
         double outstanding = 0;
 
-        // print banner
-        println("*************************");
-        println("***** Customer Owes *****");
-        println("*************************");
+        printBanner();
 
         // calculate outstanding
         for (Order order : orders) {
@@ -32,6 +29,12 @@ public class ExtractMethod {
         // print details
         println("name: " + name);
         println("amount: " + outstanding);
+    }
+
+    private void printBanner() {
+        println("*************************");
+        println("***** Customer Owes *****");
+        println("*************************");
     }
 
     void setOutputStream(ByteArrayOutputStream outputStream) {
