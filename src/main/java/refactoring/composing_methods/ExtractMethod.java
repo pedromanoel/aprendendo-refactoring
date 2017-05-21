@@ -26,18 +26,24 @@ public class ExtractMethod {
     }
 
     void printOwing(double previousAmount) {
-        Iterator<Order> i = orders.iterator();
         double outstanding = previousAmount * 1.2;
 
         printBanner();
 
+        outstanding = calculateOutstanding(outstanding);
+
+        printDetails(outstanding);
+    }
+
+    private double calculateOutstanding(double outstanding) {
+        Iterator<Order> i = orders.iterator();
         // calculate outstanding
         while(i.hasNext()) {
             Order order = i.next();
             outstanding += order.getAmmount();
         }
 
-        printDetails(outstanding);
+        return outstanding;
     }
 
     private void printBanner() {
