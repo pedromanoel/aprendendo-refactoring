@@ -3,6 +3,7 @@ package refactoring.composing_methods;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.Iterator;
 import java.util.List;
 
 public class ExtractMethod {
@@ -17,14 +18,9 @@ public class ExtractMethod {
     }
 
     void printOwing() {
-        double outstanding = 0;
-
         printBanner();
 
-        // calculate outstanding
-        for (Order order : orders) {
-            outstanding += order.getAmmount();
-        }
+        double outstanding = getOutstanding();
 
         printDetails(outstanding);
     }
@@ -39,6 +35,18 @@ public class ExtractMethod {
         // print details
         println("name: " + name);
         println("amount: " + outstanding);
+    }
+
+    private double getOutstanding() {
+        Iterator<Order> i = orders.iterator();
+        double result = 0;
+
+        while(i.hasNext()) {
+            Order order = i.next();
+            result += order.getAmmount();
+        }
+
+        return result;
     }
 
     void setOutputStream(ByteArrayOutputStream outputStream) {
