@@ -1,11 +1,15 @@
 package refactoring.composing_methods;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 public class ExtractMethod {
 
     private List<Order> orders;
     private String name;
+    private OutputStream outputStream;
 
     public ExtractMethod(List<Order> orders, String name) {
         this.orders = orders;
@@ -16,9 +20,9 @@ public class ExtractMethod {
         double outstanding = 0;
 
         // print banner
-        System.out.println("*************************");
-        System.out.println("***** Customer Owes *****");
-        System.out.println("*************************");
+        println("*************************");
+        println("***** Customer Owes *****");
+        println("*************************");
 
         // calculate outstanding
         for (Order order : orders) {
@@ -26,8 +30,15 @@ public class ExtractMethod {
         }
 
         // print details
-        System.out.println("name: " + name);
-        System.out.println("amount: " + outstanding);
+        println("name: " + name);
+        println("amount: " + outstanding);
     }
 
+    void setOutputStream(ByteArrayOutputStream outputStream) {
+        this.outputStream = outputStream;
+    }
+
+    private void println(String text) {
+        new PrintStream(outputStream).println(text);
+    }
 }
