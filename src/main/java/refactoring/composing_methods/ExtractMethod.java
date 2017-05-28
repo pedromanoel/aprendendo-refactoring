@@ -39,7 +39,7 @@ public class ExtractMethod {
 
         while(i.hasNext()) {
             Order order = i.next();
-            result += order.getAmmount();
+            result += order.getAmount();
         }
 
         return result;
@@ -63,7 +63,7 @@ public class ExtractMethod {
 
         while(i.hasNext()) {
             Order order = i.next();
-            result += order.getAmmount();
+            result += order.getAmount();
         }
 
         return result;

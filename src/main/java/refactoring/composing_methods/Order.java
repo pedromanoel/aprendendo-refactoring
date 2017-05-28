@@ -14,7 +14,7 @@ class Order {
         this.basePrice = basePrice;
     }
 
-    public double getAmmount() {
+    public double getAmount() {
         return amount;
     }
 
