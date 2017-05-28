@@ -8,7 +8,7 @@ public class InlineTemp {
     }
 
     boolean basePriceLargerThanThousand() {
-        double basePrice = anOrder.basePrice();
+        final double basePrice = anOrder.basePrice();
 
         return basePrice > 1000;
     }
